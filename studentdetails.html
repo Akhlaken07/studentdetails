@@ -1,0 +1,63 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Student Details</title>
+        <style>
+
+
+    .submit-button {
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        transition-duration: 0.4s;
+    }
+        </style>
+       
+    </head>
+    <body>
+        <h1>Student Details</h1>
+        <form id="stud" action="studentdetails.php" method="post">
+            <div>
+                <label for="name">Name (Legal/Official) : </label>
+                <input type="text" id="name" name="name" pattern="[A-Za-z].{1,}" title="Alphabet and spaces only"><br><br>
+            <div>
+                <label for="matricno">Matric No. : </label>
+                <input type="text" id="matricno" name="matricno" pattern="[0-9].{6,}" title="Number only"><br><br>
+            </div>
+            <div>
+                <label for="cAddress">Current Address : </label>
+                <input type="text" id="cAddress" name="cAddress" pattern="[a-zA-Z0-9\s,.'-]{3,}$/" title="Follow address format"><br><br>
+            </div>
+            <div>
+                <label for="hAddress">Home Address : </label>
+                <input type="text" id="hAddress" name="hAddress" pattern="[a-zA-Z0-9\s,.'-]{3,}$/" title="Follow address format"><br><br>
+            </div>
+            <div>
+                <label for="email">Email : </label>
+                <input type="text" id="email" name="email" pattern="[A-Za-z0-9]+@[A-Za-z0-9]+\.[A-Za-z0-9]+$" title="Follow email format"><br><br>
+            </div>
+            <div>
+                <label for="mPhone">Mobile Phone No. </label>
+                <input type="text" id="mPhone" name="mPhone" pattern="[0-9].{9,}" title="Number only"><br><br>
+            </div>
+            <div>
+                <label for="hPhone">Home Phone No. </label>
+                <input type="text" id="hPhone" name="hPhone" pattern="[0-9].{9,}" title="Number only"><br><br>
+            </div>
+            <div>
+                <input type="submit" value="Submit" >
+            </div>
+        </form>
+
+    <script src="patternregex.js"></script>
+    </body>
+    </html>

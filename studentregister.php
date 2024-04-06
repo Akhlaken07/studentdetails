@@ -1,30 +1,32 @@
+<?php
+session_start();
+?>
+    
     <!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Student Details</title>
-        <style>
-
-
-    .submit-button {
-        background-color: #4CAF50; /* Green */
-        border: none;
-        color: white;
-        padding: 15px 32px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin: 4px 2px;
-        cursor: pointer;
-        transition-duration: 0.4s;
-    }
-        </style>
        
     </head>
     <body>
-        <h1>Student Details</h1>
+    <h1>Student Details</h1> 
+    <a href="logout.php" style="
+    padding: 10px 20px;
+    background-color: #f44336;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    " onmouseover="this.style.backgroundColor='#e53935'" onmouseout="this.style.backgroundColor='#f44336'">
+        Logout
+    </a><br><br>
+
+        <?php
+        include 'display.php';
+        ?><br>
+
         <form id="stud" action="studentdetails.php" method="post">
             <div>
                 <label for="name">Name (Legal/Official) : </label>
@@ -54,8 +56,18 @@
                 <input type="text" id="hPhone" name="hPhone" pattern="[0-9].{9,}" title="Number only"><br><br>
             </div>
             <div>
-                <input type="submit" value="Submit" >
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" pattern="[A-Za-z\d]{6,}" title="Must be at least 6 characters"><br><br>
             </div>
+            <input type="submit" value="Submit" style="
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        " onmouseover="this.style.backgroundColor='#45a049'" onmouseout="this.style.backgroundColor='#4CAF50'">
         </form>
 
     <script src="patternregex.js"></script>

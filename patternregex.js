@@ -6,12 +6,14 @@ document.getElementById('stud').addEventListener('submit', function(){
     var email = document.getElementById('email').value;
     var hPhone = document.getElementById('hPhone').value;
     var mPhone = document.getElementById('mPhone').value;
+    var password = document.getElementById('password').value;
     
     var regexName = /^[A-Za-z].{1,}/;
     var regexMatricno = /^[0-9].{6,}/;
     var regexAddress = /^[[a-zA-Z0-9\s,.'-]{3,}$/;
     var regexEmail = /^[A-Za-z0-9]+@[A-Za-z0-9]+\.[A-Za-z0-9]+$/;
     var regexPhone = /^[0-9].{9,}$/;
+    var regexPassword = /^[A-Za-z\d]{6,}$/;
    
     if (!regexName.test(name)) {
         alert('Invalid name. Please use only letters and spaces.');
@@ -33,6 +35,9 @@ document.getElementById('stud').addEventListener('submit', function(){
     }
     if (!regexPhone.test(mPhone)) {
         alert('Invalid mobile phone number. Please use only numbers.'); 
+    }
+    if (!regexPassword.test(password)) {
+        alert('Invalid password. Please use password format.');
     }
 
     });

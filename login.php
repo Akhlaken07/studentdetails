@@ -1,12 +1,13 @@
 <?php
+session_start(); // Start the session at the beginning
 
 $username = $_POST['username'];
 $password = $_POST['password'];
 
-//Database connection
-$conn = new mysqli('localhost','root','','test');
-if ($conn->connect_error){
-    die('Connection Failed : '.$conn->connect_error);
+// Database connection
+$conn = new mysqli('localhost', 'root', '', 'test');
+if ($conn->connect_error) {
+    die('Connection Failed : ' . $conn->connect_error);
 }
 
 // Regular expressions
@@ -15,21 +16,35 @@ $regexPassword = "/^[A-Za-z\d]{6,}$/";
 
 // Validate inputs
 if (!preg_match($regexUsername, $username)) {
-    echo 'Invalid name. Please use only letters and spaces.';
+    die('Invalid name. Please use only letters and spaces.');
 }
 if (!preg_match($regexPassword, $password)) {
-    echo 'Invalid password';
+    die('Invalid password');
 }
 
-//validate
-$query = "SELECT * FROM login WHERE username='$username' AND password='$password'";
+// Validate using prepared statements
+$stmt = $conn->prepare("SELECT * FROM logintable WHERE username=?");
+$stmt->bind_param("s", $username);
+$stmt->execute();
+$result = $stmt->get_result();
 
-$result = $conn->query($query);
+if ($row = $result->fetch_assoc()) {
+    // Verify the password (assuming password column contains hashed passwords)
+    if (password_verify($password, $row['password'])) {
+        // Store user info in session
+        $_SESSION['username'] = $row['username'];
+        $_SESSION['usertype'] = $row['usertype'];
 
-if ($result->num_rows == 1) {
-    header("Location: studentregister.php");
-} else {
-    echo 'Login failed';
+        // Redirect based on usertype
+        if ($row['usertype'] == 'admin') {
+            header("Location: admin_display.php");
+            exit();
+        } elseif ($row['usertype'] == 'user') {
+            header("Location: users_display.php");
+            exit();
+        }
+    }
 }
 
+// echo "Invalid username or password";
 ?>

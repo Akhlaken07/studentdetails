@@ -1,3 +1,30 @@
+<?php
+session_start(); // Start the session
+echo "<br>session_id(): ".session_id();
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Details</title>
+</head>
+<body>
+<h1>Student Details</h1> 
+    <a href="logout.php" style="
+    padding: 10px 20px;
+    background-color: #f44336;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    " onmouseover="this.style.backgroundColor='#e53935'" onmouseout="this.style.backgroundColor='#f44336'">
+        Logout
+    </a><br><br>
+</body>
+</html>
+
 <?php 
         $conn = new mysqli("localhost", "root", "", "test");
 

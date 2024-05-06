@@ -1,7 +1,8 @@
 <?php
-session_start();
+session_start(); // Start the session
+echo "<br>session_id(): ".session_id();
 ?>
-    
+
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -23,9 +24,6 @@ session_start();
         Logout
     </a><br><br>
 
-        <?php
-        include 'display.php';
-        ?><br>
 
         <form id="stud" action="studentdetails.php" method="post">
             <div>
